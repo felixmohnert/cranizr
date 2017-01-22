@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe RPackage, type: :model do
+  include ActiveJob::TestHelper
+
   before(:all) do
     @packages ||= RPackage.fetch_r_packages_file
   end
@@ -42,10 +44,8 @@ RSpec.describe RPackage, type: :model do
 
     describe 'store_r_packages_infos' do
       it 'pushes package_infos to the queue' do
-        pending
-        expect {
-          RPackage.store_r_packages_infos([{ 'Key' => 'Value' }])
-        }.to change(StoreRPackageInfosJob.jobs, :size).by(1)
+        RPackage.store_r_packages_infos([{ 'Key' => 'Value' }, { '2nd' => 'Package' }])
+        expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 2
       end
     end
 

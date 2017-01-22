@@ -5,8 +5,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'sidekiq/testing'
-Sidekiq::Testing.fake!
 
+Sidekiq::Testing.fake!
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|

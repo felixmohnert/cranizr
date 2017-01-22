@@ -20,7 +20,7 @@ RSpec.describe RPackage, type: :model do
   context 'class methods' do
     describe 'fetch_r_packages_file' do
       it "doensn't raise error" do
-        expect{ @packages }.not_to raise_error
+        expect { @packages }.not_to raise_error
       end
 
       it 'returns a string' do

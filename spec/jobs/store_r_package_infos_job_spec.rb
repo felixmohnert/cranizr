@@ -8,21 +8,21 @@ RSpec.describe StoreRPackageInfosJob, type: :job do
     end
 
     it 'finds and updates if package with same name & version exists' do
-      expect {
-        StoreRPackageInfosJob.perform_now({ "Package" => "ABC", "Version" => "0.0.2" })
-      }.not_to change { RPackage.count }
+      expect do
+        StoreRPackageInfosJob.perform_now('Package' => 'ABC', 'Version' => '0.0.2')
+      end.not_to change { RPackage.count }
     end
 
     it 'creates a new package entry when no package with same name and version exists' do
-      expect {
-        StoreRPackageInfosJob.perform_now({ "Package" => "New One", "Version" => "0.0.2" })
-      }.to change { RPackage.count }.by(1)
+      expect do
+        StoreRPackageInfosJob.perform_now('Package' => 'New One', 'Version' => '0.0.2')
+      end.to change { RPackage.count }.by(1)
     end
 
     it 'creates a new package entry when package name exists but version is different' do
-      expect {
-        StoreRPackageInfosJob.perform_now({ "Package" => "ABC", "Version" => "0.0.3" })
-      }.to change { RPackage.count }.by(1)
+      expect do
+        StoreRPackageInfosJob.perform_now('Package' => 'ABC', 'Version' => '0.0.3')
+      end.to change { RPackage.count }.by(1)
     end
   end
 end

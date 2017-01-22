@@ -9,7 +9,7 @@ class RPackage < ApplicationRecord
   R_PACKAGES_FILE_URL = 'https://cran.r-project.org/src/contrib/PACKAGES'.freeze
 
   def self.fetch_r_packages_file
-    open(R_PACKAGES_FILE_URL) { |f| f.read }
+    open(R_PACKAGES_FILE_URL, &:read)
   end
 
   def self.convert_r_packages_file_to_hash(file)
@@ -23,7 +23,7 @@ class RPackage < ApplicationRecord
   end
 
   def self.search(search)
-    where("name ILIKE ?", "%#{search}%")
+    where('name ILIKE ?', "%#{search}%")
   end
 
   def read_description_infos_from_tar_and_store

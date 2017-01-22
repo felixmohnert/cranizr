@@ -35,3 +35,5 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'whenever', require: false
 end
+
+ruby "2.4.0"

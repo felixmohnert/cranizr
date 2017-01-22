@@ -4,6 +4,8 @@ require 'rubygems/package'
 require 'zlib'
 
 class RPackage < ApplicationRecord
+  validates :name, presence: true
+
   R_PACKAGES_FILE_URL = 'https://cran.r-project.org/src/contrib/PACKAGES'.freeze
 
   def self.fetch_r_packages_file
@@ -36,6 +38,8 @@ class RPackage < ApplicationRecord
     )
   end
 
+  private
+
   def read_description_from_package
     uncompressed = Gem::Package::TarReader.new(Zlib::GzipReader.new(open(r_package_url)))
 
@@ -43,8 +47,6 @@ class RPackage < ApplicationRecord
       f.full_name == "#{name}/DESCRIPTION"
     end.read
   end
-
-  private
 
   def r_package_url
     "https://cran.r-project.org/src/contrib/#{name}_#{version}.tar.gz"

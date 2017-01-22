@@ -1,0 +1,26 @@
+<h1>All R Packages</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+      <th>Depends</th>
+      <th>Suggests</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @r_packages&.each do |r_package| %>
+      <tr>
+        <th scope="row"><%= link_to(r_package.name, r_package_path(r_package)) %></td>
+        <td><%= r_package.version %></td>
+        <td><%= r_package.depends %></td>
+        <td><%= r_package.suggests %></td>
+        <td><%= r_package.license %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @r_packages %>

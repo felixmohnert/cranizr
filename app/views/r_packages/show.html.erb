@@ -1,0 +1,62 @@
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th><%= @r_package.name %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Version</th>
+      <td><%= @r_package.version %></td>
+    </tr>
+    <tr>
+      <th scope="row">Depends</th>
+      <td><%= @r_package.depends %></td>
+    </tr>
+    <tr>
+      <th scope="row">Suggests</th>
+      <td><%= @r_package.suggests %></td>
+    </tr>
+    <tr>
+      <th scope="row">License</th>
+      <td><%= @r_package.license %></td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td><%= @r_package.version_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Long Title</th>
+      <td><%= @r_package.long_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Authors</th>
+      <td><%= @r_package.authors %></td>
+    </tr>
+    <tr>
+      <th scope="row">Maintainer</th>
+      <td><%= @r_package.maintainer_name %> <%= @r_package.maintainer_email %></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><%= @r_package.description %></td>
+    </tr>
+    <tr>
+      <th scope="row">Repository</th>
+      <td><%= @r_package.repository %></td>
+    </tr>
+    <tr>
+      <th scope="row">Packaged</th>
+      <td><%= @r_package.packaged_at %> from <%= @r_package.packaged_by %></td>
+    </tr>
+    <tr>
+      <th scope="row">Published at</th>
+      <td><%= @r_package.publication_at %></td>
+    </tr>
+    <tr>
+      <th scope="row">Timestamps</th>
+      <td>Created at: <%= @r_package.created_at %> Updated at: <%= @r_package.created_at %></td>
+    </tr>
+  </tbody>
+</table>

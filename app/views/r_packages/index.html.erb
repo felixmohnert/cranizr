@@ -1,5 +1,10 @@
 <h1>All R Packages</h1>
 
+<%= form_tag(r_packages_path, method: 'get', id: 'search-form', class: 'form-inline centered') do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Search Packages', class: 'form-control' %>
+  <%= submit_tag 'Search', name: nil, class: 'btn btn-primary' %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>

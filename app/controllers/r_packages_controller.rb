@@ -1,6 +1,6 @@
 class RPackagesController < ApplicationController
   def index
-    @r_packages = RPackage.order(:name).page(params[:page]) || nil
+    @r_packages = RPackage.search(params[:search]).order(:name).page(params[:page])
   end
 
   def show

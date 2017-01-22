@@ -22,6 +22,10 @@ class RPackage < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    where("name ILIKE ?", "%#{search}%")
+  end
+
   def read_description_infos_from_tar_and_store
     r_package_hash = self.class.convert_r_packages_file_to_hash(read_description_from_package).first
     update(

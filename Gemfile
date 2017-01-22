@@ -28,6 +28,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3'
 end
 
+group :test do
+  gem 'rails-controller-testing'
+end
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
@@ -36,4 +40,4 @@ group :development do
   gem 'whenever', require: false
 end
 
-ruby "2.4.0"
+ruby '2.4.0'

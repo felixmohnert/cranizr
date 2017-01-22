@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cranizr</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cranizr</h3>
+              <nav class="nav nav-masthead">
+                <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}" %>
+                <%= link_to 'R Packages', r_packages_path, class: "nav-link #{'active' if controller.controller_name == "r_packages"}" %>
+                <%= link_to 'Search', '#', class: "nav-link #{'active' if false}" %>
+              </nav>
+            </div>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

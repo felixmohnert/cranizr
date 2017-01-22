@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: cranizr_development
+
+test:
+  <<: *default
+  database: cranizr_test
+
+production:
+  <<: *default
+  database: cranizr_production
+  username: cranizr
+  password: <%= ENV['CRANIZR_DATABASE_PASSWORD'] %>

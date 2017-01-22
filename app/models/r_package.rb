@@ -32,12 +32,12 @@ class RPackage < ApplicationRecord
       long_name:        r_package_hash['Title'],
       version_date:     r_package_hash['Date'],
       authors:          r_package_hash['Author'],
-      maintainer_name:  r_package_hash['Maintainer'],
-      maintainer_email: r_package_hash['Maintainer'],
+      maintainer_name:  name_and_mail_regex.match(r_package_hash['Maintainer'])[1],
+      maintainer_email: name_and_mail_regex.match(r_package_hash['Maintainer'])[2],
       description:      r_package_hash['Description'],
       repository:       r_package_hash['Repository'],
-      packaged_at:      r_package_hash['Packaged'],
-      packaged_by:      r_package_hash['Packaged'],
+      packaged_at:      /[^;]*/.match(r_package_hash['Packaged']).to_s,
+      packaged_by:      /; (.+)/.match(r_package_hash['Packaged'])[1],
       publication_at:   r_package_hash['Date/Publication']
     )
   end
@@ -50,6 +50,10 @@ class RPackage < ApplicationRecord
     text = uncompressed.detect do |f|
       f.full_name == "#{name}/DESCRIPTION"
     end.read
+  end
+
+  def name_and_mail_regex
+    /(.*[^\s*<])?\s*<(.*)>/
   end
 
   def r_package_url

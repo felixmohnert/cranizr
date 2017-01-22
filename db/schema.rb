@@ -10,27 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_121_171_744) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+ActiveRecord::Schema.define(version: 20170121171744) do
 
-  create_table 'r_packages', force: :cascade do |t|
-    t.string   'name'
-    t.string   'version'
-    t.text     'depends'
-    t.text     'suggests'
-    t.string   'license'
-    t.datetime 'version_date'
-    t.text     'long_name'
-    t.text     'authors'
-    t.string   'maintainer_name'
-    t.string   'maintainer_email'
-    t.text     'description'
-    t.string   'repository'
-    t.datetime 'packaged_at'
-    t.string   'packaged_by'
-    t.datetime 'publication_at'
-    t.datetime 'created_at',       null: false
-    t.datetime 'updated_at',       null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "r_packages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "version"
+    t.text     "depends"
+    t.text     "suggests"
+    t.string   "license"
+    t.datetime "version_date"
+    t.text     "long_name"
+    t.text     "authors"
+    t.string   "maintainer_name"
+    t.string   "maintainer_email"
+    t.text     "description"
+    t.string   "repository"
+    t.datetime "packaged_at"
+    t.string   "packaged_by"
+    t.datetime "publication_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
 end

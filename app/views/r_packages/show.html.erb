@@ -36,7 +36,7 @@
     </tr>
     <tr>
       <th scope="row">Maintainer</th>
-      <td><%= @r_package.maintainer_name %> <%= @r_package.maintainer_email %></td>
+      <td><%= @r_package.maintainer_name %> <%= link_to(@r_package.maintainer_email, "mailto:#{@r_package.maintainer_email}") if @r_package.maintainer_email %></td>
     </tr>
     <tr>
       <th scope="row">Description</th>
@@ -48,7 +48,7 @@
     </tr>
     <tr>
       <th scope="row">Packaged</th>
-      <td><%= @r_package.packaged_at %> from <%= @r_package.packaged_by %></td>
+      <td><%= @r_package.packaged_at %> <%= "from #{@r_package.packaged_by}" if @r_package.packaged_by %></td>
     </tr>
     <tr>
       <th scope="row">Published at</th>
